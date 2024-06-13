@@ -11,21 +11,22 @@ def menu():
     
     print("""\n****** Seja bem vindo(a) ao Banco Gotham City!
     O maior Banco da Europa desde 1941 ****** """)
-    print("\nSelecione uma operação:")
+    print("\nMenu de Operações:")
     print("1. Depositar")
     print("2. Sacar")
     print("3. Extrato")
     print("4. Sair\n")
+    return int(input("Selecione uma operação: "))
 
 
 def depositar():
     global SALDO, EXTRATO
-    valor = float(input("Informe o valor do depósito: "))
+    valor = float(input("\nInforme o valor do depósito: "))
     if valor >= 1:
         SALDO += valor
         EXTRATO += f"Depósito R$: {valor:.2f} \n"
     else:
-        print("Operação falhou! o valor informado é inválido.\n")
+        print("\nOperação falhou! o valor informado é inválido.\n")
 
 
 def sacar():
@@ -34,7 +35,7 @@ def sacar():
         print("Operação falhou! Número máximo de saques excedido.")
         return
     
-    valor = float(input("Informe o valor que deseja sacar: "))
+    valor = float(input("\nInforme o valor que deseja sacar: "))
     if valor >= 1 and valor <= SALDO :
         if valor <= SALDO_LIMITE_SAQUE:
             SALDO -= valor 
@@ -55,7 +56,7 @@ def extrato():
 
 def main():
      while True:
-        opcao = int(input(menu()))
+        opcao = menu()
         if opcao == 1:
             depositar()
         elif opcao == 2:
